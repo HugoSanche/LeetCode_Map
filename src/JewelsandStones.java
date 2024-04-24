@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.Set;
+
 //771. Jewels and Stones
 //Easy
 //Topics
@@ -21,7 +24,7 @@ public class JewelsandStones {
     public static void main(String[] args) {
         String jewels="aA";
         String stones="aAAbbbb";
-        int resul=numJewelsInStones(jewels, stones);
+        int resul=numJewelsInStones2(jewels, stones);
         System.out.println(resul);
     }
 
@@ -35,6 +38,20 @@ public class JewelsandStones {
                     count++;
                     break;
                 }
+            }
+        }
+        return count;
+    }
+    public static int numJewelsInStones2(String jewels, String stones) {
+        int count=0;
+        Set setJewel=new HashSet<>();
+
+        for(char c:jewels.toCharArray()){
+            setJewel.add(c);
+        }
+        for(char c:stones.toCharArray()){
+            if(setJewel.contains(c)){
+                count++;
             }
         }
         return count;
